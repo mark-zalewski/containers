@@ -8,7 +8,7 @@ services:
       - PGID=1000
       - TZ=America/Chicago
     volumes:
-      - ./tautulli:/config
+      - /home/mark/container_data/tautulli:/config
     ports:
       - 8181:8181
     restart: unless-stopped
