@@ -7,6 +7,11 @@ services:
       - PUID=0
       - PGID=0
       - TZ=America/Chicago
+  volumes:
+      - /home/mark/radarr:/config
+      - /mnt/data/media/movies:/data/media/movies
+      - /mnt/data:/data
+      - /mnt/data:/downloads/completed/Movies
     ports:
       - 7878:7878
     restart: unless-stopped
