@@ -10,6 +10,6 @@ services:
   volumes:
       - /mnt/container_data/radarr:/config
       - /mnt/data:/data
-    ports:
+  ports:
       - 7878:7878
-    restart: unless-stopped
+  restart: unless-stopped
