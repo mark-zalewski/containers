@@ -11,7 +11,7 @@ services:
       - NZBGET_PASS=marcus21Z! #optional
     volumes:
       - /mnt/container_data/nzbget:/config
-      - /mnt/data/usenet:/
+      - /mnt/data/:/usenet
     ports:
       - 6789:6789
     restart: unless-stopped
