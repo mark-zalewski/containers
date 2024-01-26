@@ -9,9 +9,7 @@ services:
       - TZ=America/Chicago
   volumes:
       - /mnt/container_data/radarr:/config
-      - /mnt/data/media/movies:/data/media/movies
       - /mnt/data:/data
-      - /mnt/data:/downloads/completed/Movies
     ports:
       - 7878:7878
     restart: unless-stopped
