@@ -8,7 +8,7 @@ services:
       - PGID=1000
       - TZ=America/Chicago
     volumes:
-      - /home/mark/container_data/tautulli:/config
+      - /var/lib/docker/volumes/NAS_Container_Data/_data/tautulli:/config
     ports:
       - 8181:8181
     restart: unless-stopped
