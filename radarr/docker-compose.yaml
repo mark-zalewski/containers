@@ -7,10 +7,6 @@ services:
       - PUID=0
       - PGID=0
       - TZ=America/Chicago
-    volumes:
-      - /mnt/movies:/movies
-      - /mnt:/data
-      - /mnt:/downloads/completed/Movies
     ports:
       - 7878:7878
     restart: unless-stopped
