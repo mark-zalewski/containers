@@ -1,1 +1,18 @@
-
+version: "2.1"
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Chicago
+    volumes:
+      - /home/mark/radarr:/config
+      - /mnt/movies:/movies
+        #      - /mnt/primary_torrents:/data
+      - /mnt:/data
+      - /mnt:/downloads/completed/Movies
+    ports:
+      - 7878:7878
+    restart: unless-stopped
