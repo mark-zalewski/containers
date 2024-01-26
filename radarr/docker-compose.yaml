@@ -8,7 +8,7 @@ services:
       - PGID=0
       - TZ=America/Chicago
   volumes:
-      - /home/mark/radarr:/config
+      - /mnt/container_data/radarr:/config
       - /mnt/data/media/movies:/data/media/movies
       - /mnt/data:/data
       - /mnt/data:/downloads/completed/Movies
