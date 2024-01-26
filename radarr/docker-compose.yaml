@@ -10,7 +10,6 @@ services:
     volumes:
       - /home/mark/radarr:/config
       - /mnt/movies:/movies
-        #      - /mnt/primary_torrents:/data
       - /mnt:/data
       - /mnt:/downloads/completed/Movies
     ports:
