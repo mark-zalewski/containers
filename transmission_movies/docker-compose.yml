@@ -4,7 +4,7 @@ services:
             - NET_ADMIN
         volumes:
           - /mnt/data/torrents/movies:/data
-          - /m:/config'
+          - /mnt/container_data/radarr:/config
         environment:
             - OPENVPN_PROVIDER=SURFSHARK
             - OPENVPN_CONFIG=us-chi.prod.surfshark.com_udp
