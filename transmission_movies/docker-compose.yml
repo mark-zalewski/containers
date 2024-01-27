@@ -10,7 +10,7 @@ services:
             - OPENVPN_CONFIG=us-chi.prod.surfshark.com_udp
             - OPENVPN_USERNAME=CCAbbSjrdJLTMtytcHvhJdYT
             - OPENVPN_PASSWORD=bmtGaUQd4bBAjRbajS9p4gqH
-            - LOCAL_NETWORK=10.0.1.0/24
+            - LOCAL_NETWORK=10.0.10.0/24
             - PUID=0
             - PGID=0
             - USER='mark'
