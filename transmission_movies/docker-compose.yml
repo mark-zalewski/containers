@@ -12,8 +12,8 @@ services:
             - OPENVPN_USERNAME=CCAbbSjrdJLTMtytcHvhJdYT
             - OPENVPN_PASSWORD=bmtGaUQd4bBAjRbajS9p4gqH
             - LOCAL_NETWORK=10.0.1.0/24
-            - PUID=0
-            - PGID=0
+            - PUID=${PUID}
+            - PGID=${PGID}
             - USER='mark'
             - PASS='marcus21Z!'
         logging:
@@ -21,7 +21,7 @@ services:
             options:
                 max-size: 10m
         ports:
-            - '9999:9091'
+            - '9091:9091'
             - '51413:51413'
             - '51413:51413/udp'
         image: haugene/transmission-openvpn
