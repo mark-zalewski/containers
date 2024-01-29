@@ -8,10 +8,9 @@ services:
       - PGID=0
       - TZ=America/Chicago
     volumes:
-      - /home/mark/sonarr:/config
-      - /mnt/tv:/tv
-      - /mnt:/data
-      - /mnt:/downloads/completed/Tv
+      - /mnt/container_data/sonarr:/config
+      - /mnt/media:/plex
+      - /mnt/data:/data
     ports:
       - 8989:8989
     restart: unless-stopped
