@@ -1,1 +1,17 @@
-
+version: "2.1"
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Chicago
+    volumes:
+      - /home/mark/sonarr:/config
+      - /mnt/tv:/tv
+      - /mnt:/data
+      - /mnt:/downloads/completed/Tv
+    ports:
+      - 8989:8989
+    restart: unless-stopped
