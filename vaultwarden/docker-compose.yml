@@ -6,7 +6,7 @@ services:
     image: vaultwarden/server:latest
     restart: unless-stopped
     volumes:
-      - /data/:/data/
+      - /mnt/container_data/data/:/data/
     ports:
       - 8888:80
     environment:
