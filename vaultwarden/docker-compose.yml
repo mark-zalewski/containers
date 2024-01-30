@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  vaultwarden:
+    container_name: vaultwarden
+    image: vaultwarden/server:latest
+    restart: unless-stopped
+    volumes:
+      - /data/:/data/
+    ports:
+      - 8888:80
+    environment:
+      - ADMIN_TOKEN=tf240fBkXlepva0xbDCu4IxKXKzHulu3FwKysKuGQV00M4VE1cmi2Sp1UoQdk8SC
