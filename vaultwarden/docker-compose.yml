@@ -9,5 +9,3 @@ services:
       - /mnt/container_data/data/:/data/
     ports:
       - 8888:80
-    environment:
-      - ADMIN_TOKEN=tf240fBkXlepva0xbDCu4IxKXKzHulu3FwKysKuGQV00M4VE1cmi2Sp1UoQdk8SC
