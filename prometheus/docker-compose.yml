@@ -2,7 +2,12 @@ version: '3'
 services:
   prometheus:
     image: prom/prometheus
+    volumes:
+      - "/mnt/container_data/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
+    networks:
+      - localprom
     ports:
       - 9090:9090
-    volumes:
-      - /mnt/container_data/prometheus:/etc/prometheus/prometheus.yml
+networks:
+  localprom:
+    driver: bridge
