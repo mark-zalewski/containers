@@ -9,7 +9,7 @@ volumes:
 services:
   prometheus:
     image: prom/prometheus:latest
-    user: mark
+    user: "mark"
     container_name: prometheus
     ports:
       - "9090:9090"
