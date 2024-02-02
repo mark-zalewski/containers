@@ -4,8 +4,8 @@ services:
     image: lscr.io/linuxserver/tautulli:latest
     container_name: tautulli
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=America/Chicago
     ports:
       - 8181:8181
