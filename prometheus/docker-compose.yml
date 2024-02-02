@@ -18,12 +18,3 @@ services:
     restart: unless-stopped
     command:
       - "--config.file=/mnt/container_data/prometheus/prometheus.yml"
-
-  grafana:
-    image: grafana/grafana:latest
-    container_name: grafana
-    ports:
-      - "3000:3000"
-    volumes:
-      - grafana-data:/mnt/container_data/grafana
-    restart: unless-stopped
