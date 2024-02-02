@@ -12,7 +12,7 @@ services:
     user: "mark"
     container_name: prometheus
     ports:
-      - "9091:9090"
+      - "9092:9090"
     volumes:
       - /mnt/container_data/prometheus:/etc/prometheus
       - /mnt/container_data/prometheus/prometheus-data:/prometheus
