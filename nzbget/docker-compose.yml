@@ -4,8 +4,8 @@ services:
     image: lscr.io/linuxserver/nzbget:latest
     container_name: nzbget
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=America/Chicago
       - NZBGET_USER=mark #optional
       - NZBGET_PASS=marcus21Z! #optional
