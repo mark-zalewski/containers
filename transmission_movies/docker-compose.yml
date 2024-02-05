@@ -1,29 +1,21 @@
-version: '3.8'
+version: '3.3'
 services:
     transmission-openvpn:
         cap_add:
             - NET_ADMIN
         volumes:
-            - /mnt/data/torrents/movies:/data
-            - /mnt/container_data/transmission_movies:/config
+            - /mnt/data:/data
+            - /mnt/data:/config
         environment:
             - OPENVPN_PROVIDER=SURFSHARK
             - OPENVPN_CONFIG=us-chi.prod.surfshark.com_udp
             - OPENVPN_USERNAME=CCAbbSjrdJLTMtytcHvhJdYT
             - OPENVPN_PASSWORD=bmtGaUQd4bBAjRbajS9p4gqH
-            - LOCAL_NETWORK=10.0.1.0/24
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - USER='mark'
-            - PASS='marcus21Z!'
+            - LOCAL_NETWORK=10.0.10.0/24
         logging:
             driver: json-file
             options:
                 max-size: 10m
         ports:
             - '9091:9091'
-            - '51413:51413'
-            - '51413:51413/udp'
         image: haugene/transmission-openvpn
-
-        restart: unless-stopped
