@@ -8,7 +8,6 @@ services:
 
   webserver:
     image: linuxserver/paperless-ngx
-    env_file: paperless.env
     volumes:
       - /mnt/container_data/paperless/data:/usr/src/paperless/data
       - /mnt/container_data/paperless/media:/usr/src/paperless/media
