@@ -1,82 +1,92 @@
-version: "3.2"
+# Docker Compose file for running paperless from the Docker Hub.
+# This file contains everything paperless needs to run.
+# Paperless supports amd64, arm and arm64 hardware.
+#
+# All compose files of paperless configure paperless in the following way:
+#
+# - Paperless is (re)started on system boot, if it was running before shutdown.
+# - Docker volumes for storing data are managed by Docker.
+# - Folders for importing and exporting files are created in the same directory
+#   as this file and mounted to the correct folders inside the container.
+# - Paperless listens on port 8010.
+#
+# In addition to that, this Docker Compose file adds the following optional
+# configurations:
+#
+# - Instead of SQLite (default), PostgreSQL is used as the database server.
+#
+# To install and update paperless with this file, do the following:
+#
+# - Open portainer Stacks list and click 'Add stack'
+# - Paste the contents of this file and assign a name, e.g. 'paperless'
+# - Click 'Deploy the stack' and wait for it to be deployed
+# - Open the list of containers, select paperless_webserver_1
+# - Click 'Console' and then 'Connect' to open the command line inside the container
+# - Run 'python3 manage.py createsuperuser' to create a user
+# - Exit the console
+#
+# For more extensive installation and update instructions, refer to the
+# documentation.
+
+version: "3.4"
 services:
-
   broker:
-    image: redis:6.0
-    networks:
-      - internal
-
-  webserver:
-    image: linuxserver/paperless-ngx
+    image: docker.io/library/redis:7
+    restart: unless-stopped
     volumes:
-      - /mnt/container_data/paperless/data:/usr/src/paperless/data
-      - /mnt/container_data/paperless/media:/usr/src/paperless/media
-      - /mnt/container_data/paperless/export:/usr/src/paperless/export
-      - /mnt/container_data/paperless/consume:/usr/src/paperless/consume
-    environment:
-      PAPERLESS_TIME_ZONE:Americas/Chicago
-      PAPERLESS_ADMIN_USER=paperless
-      PAPERLESS_ADMIN_PASSWORD=paperless_password
-      PAPERLESS_ADMIN_MAIL=mark.zalewski@icloud.com
-      PAPERLESS_REDIS=redis://broker:6379
-      PAPERLESS_DBHOST=db
-      PAPERLESS_TIKA_ENABLED=1
-      PAPERLESS_TIKA_GOTENBERG_ENDPOINT=http://gotenberg:3001
-      PAPERLESS_TIKA_ENDPOINT=http://tika:9998
-    networks:
-      - internal
-      
-  gotenberg:
-    image: thecodingmachine/gotenberg
-    environment:
-      DISABLE_GOOGLE_CHROME: 1
-    networks:
-      - internal
-
-  tika:
-    image: apache/tika
-    networks:
-      - internal
+      - redisdata:/data
 
   db:
-    image: postgres:13
+    image: docker.io/library/postgres:15
+    restart: unless-stopped
     volumes:
-      - /mnt/container_data/paperless/paperless/pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
       POSTGRES_PASSWORD: paperless
-    networks:
-      - internal
 
-  db-backup:
-    image: postgres:13
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    restart: unless-stopped
+    depends_on:
+      - db
+      - broker
+    ports:
+      - "8010:8000"
     volumes:
-      - /mnt/container_data/paperless/database-dump:/dump
-      - /etc/localtime:/etc/localtime:ro
+      - data:/usr/src/paperless/data
+      - media:/usr/src/paperless/media
+      - ./export:/usr/src/paperless/export
+      - ./consume:/usr/src/paperless/consume
     environment:
-      PGHOST: db
-      PGDATABASE: paperless
-      PGUSER: paperless
-      PGPASSWORD: paperless
-      BACKUP_NUM_KEEP: 7
-      BACKUP_FREQUENCY: 1d
-    entrypoint: |
-      bash -c 'bash -s <<EOF
-      trap "break;exit" SIGHUP SIGINT SIGTERM
-      sleep 2m
-      while /bin/true; do
-        pg_dump -Fc > /dump/dump_\`date +%d-%m-%Y"_"%H_%M_%S\`.psql
-        (ls -t /dump/dump*.psql|head -n $$BACKUP_NUM_KEEP;ls /dump/dump*.psql)|sort|uniq -u|xargs rm -- {}
-        sleep $$BACKUP_FREQUENCY
-      done
-      EOF'
-    networks:
-    - internal
+      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_DBHOST: db
+# The UID and GID of the user used to run paperless in the container. Set this
+# to your UID and GID on the host so that you have write access to the
+# consumption directory.
+      USERMAP_UID: 1000
+      USERMAP_GID: 100
+# Additional languages to install for text recognition, separated by a
+# whitespace. Note that this is
+# different from PAPERLESS_OCR_LANGUAGE (default=eng), which defines the
+# language used for OCR.
+# The container installs English, German, Italian, Spanish and French by
+# default.
+# See https://packages.debian.org/search?keywords=tesseract-ocr-&searchon=names&suite=buster
+# for available languages.
+      #PAPERLESS_OCR_LANGUAGES: tur ces
+# Adjust this key if you plan to make paperless available publicly. It should
+# be a very long sequence of random characters. You don't need to remember it.
+      #PAPERLESS_SECRET_KEY: change-me
+# Use this variable to set a timezone for the Paperless Docker containers. If not specified, defaults to UTC.
+      #PAPERLESS_TIME_ZONE: America/Los_Angeles
+# The default language to use for OCR. Set this to the language most of your
+# documents are written in.
+      #PAPERLESS_OCR_LANGUAGE: eng
 
-networks:
-  internal:
-    driver: overlay
-    ipam:
-      config:
-        - subnet: 172.16.58.0/24 
+volumes:
+  data:
+  media:
+  pgdata:
+  redisdata:
