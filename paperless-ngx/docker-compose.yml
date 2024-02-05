@@ -14,6 +14,16 @@ services:
       - /mnt/container_data/paperless/media:/usr/src/paperless/media
       - /mnt/container_data/paperless/export:/usr/src/paperless/export
       - /mnt/container_data/paperless/consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_TIME_ZONE:Americas/Chicago
+      PAPERLESS_ADMIN_USER=paperless
+      PAPERLESS_ADMIN_PASSWORD=paperless_password
+      PAPERLESS_ADMIN_MAIL=mark.zalewski@icloud.com
+      PAPERLESS_REDIS=redis://broker:6379
+      PAPERLESS_DBHOST=db
+      PAPERLESS_TIKA_ENABLED=1
+      PAPERLESS_TIKA_GOTENBERG_ENDPOINT=http://gotenberg:3001
+      PAPERLESS_TIKA_ENDPOINT=http://tika:9998
     networks:
       - internal
       
