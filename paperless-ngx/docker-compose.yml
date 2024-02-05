@@ -2,7 +2,7 @@ version: '3'
 
 services:
   paperless:
-    image: danielquinn/paperless:latest
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
     container_name: paperless
     restart: always
     depends_on:
