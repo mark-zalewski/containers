@@ -14,7 +14,7 @@ services:
       - PAPERLESS_DB_USER=paperless_user
       - PAPERLESS_DB_PASSWORD=paperless_password
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       - /mnt/container_data/paperless/config:/config
       - /mnt/container_data/paperless/documents:/documents
