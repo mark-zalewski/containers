@@ -5,5 +5,5 @@ services:
     container_name: cloudflared-tunnel
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=eyJhIjoiNmYzNzY2MTI1MDVmOTE1YWFhMDI5N2E1NjQ5Mzg1Y2MiLCJ0IjoiNGNhMzdlMjQtMWNkZi00ZGRiLThiZWMtNmNhNWI5NGQ1NjgzIiwicyI6Ik5UYzNabUprWVRndE9HTTJaUzAwTWpNd0xXSTRPV0V0TWpWak9HVTJObUptWkRFMyJ9
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
     restart: unless-stopped
