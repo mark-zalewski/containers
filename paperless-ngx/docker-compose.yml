@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  paperless:
+    image: danielquinn/paperless:latest
+    container_name: paperless
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      - PAPERLESS_DB_HOST=postgres
+      - PAPERLESS_DB_PORT=5432
+      - PAPERLESS_DB_NAME=paperless
+      - PAPERLESS_DB_USER=paperless_user
+      - PAPERLESS_DB_PASSWORD=paperless_password
+    ports:
+      - "8000:8000"
+    volumes:
+      - /mnt/container_data/paperless/config:/config
+      - /mnt/container_data/paperless/documents:/documents
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=paperless
+      - POSTGRES_USER=paperless_user
+      - POSTGRES_PASSWORD=paperless_password
+    volumes:
+      - ./postgres-data:/mnt/container_data/paperless/postgres
