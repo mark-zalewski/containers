@@ -40,7 +40,7 @@ services:
     image: docker.io/library/postgres:15
     restart: unless-stopped
     volumes:
-      - pgdata:/mnt/container_data/paperless/postgresql/data
+      - /mnt/container_data/paperless/postgresql/data:/pgdata
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
@@ -55,10 +55,10 @@ services:
     ports:
       - "8010:8000"
     volumes:
-      - data:/mnt/container_data/paperless/data
-      - media:/mnt/container_data/paperless/media
-      - ./export:/mnt/container_data/paperless/export
-      - ./consume:/mnt/container_data/paperless/consume
+      - /mnt/container_data/paperless/data:/data
+      - /mnt/container_data/paperless/media:/media
+      - /mnt/container_data/paperless/export:./export
+      - /mnt/container_data/paperless/consume:./consume
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
