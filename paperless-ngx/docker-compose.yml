@@ -67,9 +67,6 @@ services:
 # consumption directory.
       USERMAP_UID: 1000
       USERMAP_GID: 100
-      PAPERLESS_URL=https://paperless.markzalewski.io
-      PAPERLESS_ALLOWED_HOSTS=.markzalewski.io  ## If you have multiple subdomains pointing towards it
-      PAPERLESS_CSRF_TRUSTED_ORIGINS=https://*.markzalewski.io  ## If you have multiple subdomains pointing towards it
 # Additional languages to install for text recognition, separated by a
 # whitespace. Note that this is
 # different from PAPERLESS_OCR_LANGUAGE (default=eng), which defines the
