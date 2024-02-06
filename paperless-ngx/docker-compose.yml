@@ -57,8 +57,8 @@ services:
     volumes:
       - /mnt/container_data/paperless/data:/data
       - /mnt/container_data/paperless/media:/media
-      - /mnt/container_data/paperless/export:./export
-      - /mnt/container_data/paperless/consume:./consume
+      - /mnt/container_data/paperless/export:/export
+      - /mnt/container_data/paperless/consume:/consume
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
