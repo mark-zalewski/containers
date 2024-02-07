@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - grafana_data:/var/lib/grafana
+      - /mnt/container_data/grafana:/var/lib/grafana
     restart: always
 
 volumes:
