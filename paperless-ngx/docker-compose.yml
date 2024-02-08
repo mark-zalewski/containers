@@ -40,7 +40,7 @@ services:
     image: docker.io/library/postgres:15
     restart: unless-stopped
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - /mnt/container_data/paperless/postgresql:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
@@ -55,8 +55,8 @@ services:
     ports:
       - "8010:8000"
     volumes:
-      - data:/usr/src/paperless/data
-      - media:/usr/src/paperless/media
+      - /mnt/container_data/paperless/data:/usr/src/paperless/data
+      - /mnt/container_data/paperless/media:/usr/src/paperless/media
       - ./export:/usr/src/paperless/export
       - ./consume:/usr/src/paperless/consume
     environment:
