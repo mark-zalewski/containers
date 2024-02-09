@@ -11,6 +11,9 @@ services:
             - OPENVPN_CONFIG=us-chi.prod.surfshark.com_udp
             - OPENVPN_USERNAME=CCAbbSjrdJLTMtytcHvhJdYT
             - OPENVPN_PASSWORD=bmtGaUQd4bBAjRbajS9p4gqH
+            - PUID=1000
+            - PGID=1000
+            - TRANSMISSION_WEB_UI=flood-for-transmission
         logging:
             driver: json-file
             options:
