@@ -26,20 +26,7 @@ services:
       - POSTGRES_PASSWORD=password #insert your secure database password!
       - POSTGRES_DB=teslamate
     volumes:
-      - teslamate-db:/var/lib/postgresql/data
-
-  grafana:
-    image: teslamate/grafana:latest
-    restart: always
-    environment:
-      - DATABASE_USER=teslamate
-      - DATABASE_PASS=password #insert your secure database password!
-      - DATABASE_NAME=teslamate
-      - DATABASE_HOST=database
-    ports:
-      - 3000:3000
-    volumes:
-      - teslamate-grafana-data:/var/lib/grafana
+      - /mnt/container_data/teslamate/postgresql:/var/lib/postgresql/data
 
   mosquitto:
     image: eclipse-mosquitto:2
