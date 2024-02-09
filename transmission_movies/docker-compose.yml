@@ -14,6 +14,7 @@ services:
             - PUID=1000
             - PGID=1000
             - TRANSMISSION_WEB_UI=flood-for-transmission
+            - LOCAL_NETWORK=10.0.0.0/16
         logging:
             driver: json-file
             options:
