@@ -10,6 +10,7 @@ services:
     volumes:
       - /mnt/container_data/radarr:/config
       - /mnt/data:/data
+      - /mnt/torrent:/torrent
       - /mnt/media:/plex
     ports:
       - 7878:7878
