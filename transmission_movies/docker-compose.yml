@@ -13,7 +13,7 @@ services:
             - OPENVPN_PASSWORD=bmtGaUQd4bBAjRbajS9p4gqH
             - PUID=1000
             - PGID=1000
-            - TRANSMISSION_WEB_UI=flood-for-transmission
+            - TRANSMISSION_WEB_UI=transmissionic
             - LOCAL_NETWORK=10.0.0.0/16
         logging:
             driver: json-file
