@@ -20,7 +20,7 @@ services:
             options:
                 max-size: 10m
         ports:
-            - '9999:9091'
+            - '9098:9091'
             - '51413:51413'
             - '51413:51413/udp'
         image: haugene/transmission-openvpn
