@@ -11,8 +11,8 @@ services:
             - OPENVPN_CONFIG=us-chi.prod.surfshark.com_udp
             - OPENVPN_USERNAME=CCAbbSjrdJLTMtytcHvhJdYT
             - OPENVPN_PASSWORD=bmtGaUQd4bBAjRbajS9p4gqH
-            - PUID=1000
-            - PGID=1000
+            - PUID=0
+            - PGID=0
             - TRANSMISSION_WEB_UI=transmissionic
             - LOCAL_NETWORK=10.0.0.0/16
         logging:
