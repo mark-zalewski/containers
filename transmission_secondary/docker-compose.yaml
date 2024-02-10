@@ -1,1 +1,21 @@
+services:
+    transmission-openvpn:
+        cap_add:
+            - NET_ADMIN
+        volumes:
+            - '/mnt/encoding:/data'
+        environment:
+            - OPENVPN_PROVIDER=SURFSHARK
+            - OPENVPN_CONFIG=us-chi.prod.surfshark.com_udp
+            - OPENVPN_USERNAME=CCAbbSjrdJLTMtytcHvhJdYT
+            - OPENVPN_PASSWORD=bmtGaUQd4bBAjRbajS9p4gqH
+            - LOCAL_NETWORK=10.0.10.0/24
+        logging:
+            driver: json-file
+            options:
+                max-size: 10m
+        ports:
+            - '9099:9091'
+        image: haugene/transmission-openvpn
 
+        restart: unless-stopped
