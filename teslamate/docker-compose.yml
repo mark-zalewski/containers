@@ -45,8 +45,8 @@ services:
     image: eclipse-mosquitto:2
     restart: always
     command: mosquitto -c /mosquitto-no-auth.conf
-    ports:
-      - 1883:1883
+    #ports:
+    #  - 1883:1883
       volumes:
       - /mnt/container_data/teslamate/mosquitto/config:/mosquitto/config
       - /mnt/container_data/teslamate/mosquitto/data:/mosquitto/data
