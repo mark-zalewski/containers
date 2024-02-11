@@ -14,7 +14,7 @@ services:
     ports:
       - 4000:4000
     volumes:
-      - ./import:/opt/app/import
+      - /mnt/container_data/teslamate/import:/opt/app/import
     cap_drop:
       - all
 
@@ -26,7 +26,7 @@ services:
       - POSTGRES_PASSWORD=password #insert your secure database password!
       - POSTGRES_DB=teslamate
     volumes:
-      - teslamate-db:/var/lib/postgresql/data
+      - /mnt/container_data/teslamate/postgresql:/var/lib/postgresql/data
 
   grafana:
     image: teslamate/grafana:latest
@@ -39,17 +39,17 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - teslamate-grafana-data:/var/lib/grafana
+      - /mnt/container_data/teslamate/grafana:/var/lib/grafana
 
   mosquitto:
     image: eclipse-mosquitto:2
     restart: always
     command: mosquitto -c /mosquitto-no-auth.conf
-    # ports:
-    #   - 1883:1883
-    volumes:
-      - mosquitto-conf:/mosquitto/config
-      - mosquitto-data:/mosquitto/data
+    ports:
+      - 1883:1883
+      volumes:
+      - /mnt/container_data/teslamate/mosquitto/config:/mosquitto/config
+      - /mnt/container_data/teslamate/mosquitto/data:/mosquitto/data
 
 volumes:
   teslamate-db:
