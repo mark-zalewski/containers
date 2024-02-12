@@ -46,6 +46,7 @@ services:
 
   mosquitto:
     image: eclipse-mosquitto:2
+    container_name: teslamate-mosquitto
     restart: always
     command: mosquitto -c /mosquitto-no-auth.conf
     volumes:
