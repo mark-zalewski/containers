@@ -8,7 +8,7 @@ services:
     environment:
       - ENCRYPTION_KEY=secretkey #replace with a secure key to encrypt your Tesla API tokens
       - DATABASE_USER=teslamate
-      - DATABASE_PASS=password #insert your secure database password!
+      - DATABASE_PASS=secret
       - DATABASE_NAME=teslamate
       - DATABASE_HOST=database
       - MQTT_HOST=mosquitto
