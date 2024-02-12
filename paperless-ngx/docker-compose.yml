@@ -67,6 +67,7 @@ services:
 # consumption directory.
       USERMAP_UID: 1000
       USERMAP_GID: 100
+      PAPERLESS_TIME_ZONE: America/Chicago
 # Additional languages to install for text recognition, separated by a
 # whitespace. Note that this is
 # different from PAPERLESS_OCR_LANGUAGE (default=eng), which defines the
