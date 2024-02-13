@@ -6,7 +6,7 @@ services:
     container_name: teslamate
     restart: always
     environment:
-      - ENCRYPTION_KEY=secretkey #replace with a secure key to encrypt your Tesla API tokens
+      - ENCRYPTION_KEY=325ECBC9166B8
       - DATABASE_USER=teslamate
       - DATABASE_PASS=secret
       - DATABASE_NAME=teslamate
