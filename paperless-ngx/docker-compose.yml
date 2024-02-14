@@ -68,6 +68,7 @@ services:
       USERMAP_UID: 1000
       USERMAP_GID: 100
       PAPERLESS_TIME_ZONE: America/Chicago
+      PAPERLESS_CORS_ALLOWED_HOSTS: http://paperless.markzalewski.io
 # Additional languages to install for text recognition, separated by a
 # whitespace. Note that this is
 # different from PAPERLESS_OCR_LANGUAGE (default=eng), which defines the
