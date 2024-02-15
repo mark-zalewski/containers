@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  tdarr:
+    image: 'hotio/tdarr'
+    container_name: 'tdarr'
+    restart: unless-stopped
+    ports:
+      - '8265:8265'
+    volumes:
+      - './config:/config'
+      - './cache:/cache'
+      - './media:/media'
+    environment:
+      - PUID=1000  # Set to the user ID that should own the files
+      - PGID=1000  # Set to the group ID that should own the files
+    # Optionally, you can add extra parameters here if needed
