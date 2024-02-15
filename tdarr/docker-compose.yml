@@ -2,7 +2,7 @@ version: '3'
 
 services:
   tdarr:
-    image: 'hotio/tdarr'
+    image: 'ghcr.io/haveagitgat/tdarr'
     container_name: 'tdarr'
     restart: unless-stopped
     ports:
