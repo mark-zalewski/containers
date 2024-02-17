@@ -13,4 +13,4 @@ services:
       - /mnt/container_data/readarr/config:/config
       - /mnt/container_data/readarr/media:/media
     ports:
-      - "6767:7878"
+      - 6767:7878
