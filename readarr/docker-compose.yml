@@ -1,16 +1,16 @@
-version: '3'
-
+version: "2.1"
 services:
   readarr:
-    image: hotio/readarr:latest
+    image: lscr.io/linuxserver/readarr:develop
     container_name: readarr
-    restart: unless-stopped
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/Chicago
     volumes:
       - /mnt/container_data/readarr/config:/config
-      - /mnt/container_data/readarr/media:/media
+      - /mnt/container_data/readarr/media:/books #optional
+      - /mnt/container_data/readarr/downloads:/downloads #optional
     ports:
-      - 6767:7878
+      - 6767:8787
+    restart: unless-stopped
