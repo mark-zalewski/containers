@@ -1,20 +1,15 @@
-version: '3'
-
-volumes:
-  prometheus-data:
-    driver: local
-  grafana-data:
-    driver: local
-
+version: '3.8'
 services:
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus
     container_name: prometheus
-    ports:
-      - "9092:9090"
-    volumes:
-      - /mnt/container_data/prometheus:/etc/prometheus
-      - /mnt/container_data/prometheus/prometheus-data:/prometheus
-    restart: unless-stopped
     command:
-      - "--config.file=/mnt/container_data/prometheus/prometheus.yml"
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prom_data:/prometheus
+volumes:
+  prom_data:
