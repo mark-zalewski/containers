@@ -26,7 +26,7 @@ services:
       - /mnt/container_data/tdarr/server:/app/server
       - /mnt/container_data/tdarr/configs:/app/configs
       - /mnt/container_data/tdarr/logs:/app/logs
-      - /media:/media
+      - /mnt/data/media/movies:/media
       - /transcode_cache:/temp
 
     devices:
@@ -62,7 +62,7 @@ services:
     volumes:
       - /mnt/container_data/tdarr_node/configs:/app/configs
       - /mnt/container_data/tdarr_node/logs:/app/logs
-      - /media:/media
+      - /mnt/data/media/movies:/media
       - /transcode_cache:/temp
 
     devices:
