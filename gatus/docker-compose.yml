@@ -23,7 +23,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=gatus
     volumes:
-      - ./config:/config
+      - /mnt/container_data/gratus:/config
     networks:
       - web
     depends_on:
