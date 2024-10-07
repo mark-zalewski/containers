@@ -7,7 +7,7 @@ services:
     ports:
       - '8409:8409'
     volumes:
-      - '/path/to/config:/root/.local/share/ersatztv'
-      - '/path/to/local/media:/path/to/local/media:ro'
+      - '/mnt/container_data/data/erstattv/config:/root/.local/share/ersatztv'
+      - '/mnt/data/media:/path/to/local/media:ro'
     restart: unless-stopped
-    image: 'jasongdove/ersatztv:latest-vaapi'
+    image: 'jasongdove/ersatztv:develop-nvidia'
