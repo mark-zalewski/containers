@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ersatztv:
+    container_name: ersatztv
+    environment:
+      - TZ=America/Chicago
+    ports:
+      - '8409:8409'
+    volumes:
+      - '/path/to/config:/root/.local/share/ersatztv'
+      - '/path/to/local/media:/path/to/local/media:ro'
+    restart: unless-stopped
+    image: 'jasongdove/ersatztv:latest-vaapi'
