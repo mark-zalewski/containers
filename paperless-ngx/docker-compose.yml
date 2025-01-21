@@ -65,8 +65,8 @@ services:
 # The UID and GID of the user used to run paperless in the container. Set this
 # to your UID and GID on the host so that you have write access to the
 # consumption directory.
-      USERMAP_UID: 1000
-      USERMAP_GID: 100
+      USERMAP_UID: 0
+      USERMAP_GID: 0
       PAPERLESS_TIME_ZONE: America/Chicago
       PAPERLESS_ALLOWED_HOSTS: https://paperless.markzalewski.io
       PAPERLESS_URL: https://paperless.markzalewski.io
