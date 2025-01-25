@@ -12,7 +12,7 @@ services:
       - /mnt/torrent:/torrent
       - /mnt/media:/plex
     ports:
-      - 7878:7878
+      - 7879:7878
     restart: unless-stopped
     healthcheck:
       test: curl --fail http://localhost:7878 || exit 1
