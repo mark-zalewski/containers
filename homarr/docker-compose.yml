@@ -11,5 +11,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /mnt/container_data/homarr/configs:/app/data/configs
       - /mnt/container_data/homarr/icons:/app/public/icons
+    environment:
+      - SECRET_ENCRYPTION_KEY=7c2375fff9b3bdc51ea4517625454d535c365d89360e17ffc4f44b46b8fe090f
     ports:
       - '7575:7575'
