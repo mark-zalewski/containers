@@ -10,5 +10,5 @@ services:
       - WATCHTOWER_POLL_INTERVAL=3600
       - TZ=America/Chicago
       - WATCHTOWER_NOTIFICATIONS=slack
-      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=https://hooks.slack.com/services/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
+      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=https://hooks.slack.com/services/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
     restart: unless-stopped
