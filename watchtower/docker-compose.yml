@@ -9,5 +9,4 @@ services:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_POLL_INTERVAL=3600
       - TZ=America/Chicago
-      - WATCHTOWER_NOTIFICATIONS=slack
     restart: unless-stopped
