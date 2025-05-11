@@ -20,7 +20,7 @@ services:
       - all
 
   database:
-    image: postgres:15
+    image: postgres:16.7
     container_name: teslamate-db
     restart: always
     environment:
