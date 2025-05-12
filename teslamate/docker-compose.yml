@@ -20,7 +20,7 @@ services:
       - all
 
   database:
-    image: postgres:15
+    image: postgres:16.7
     container_name: teslamate-db
     restart: always
     environment:
@@ -28,7 +28,7 @@ services:
       - POSTGRES_PASSWORD=secret
       - POSTGRES_DB=teslamate
     volumes:
-      - /mnt/container_data/tesla_mate/postgres:/var/lib/postgresql/data
+      - /mnt/container_data/tesla_mate/postgres16:/var/lib/postgresql/data
 
   grafana:
     image: teslamate/grafana:latest
