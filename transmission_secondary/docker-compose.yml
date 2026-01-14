@@ -9,7 +9,7 @@ services:
             - OPENVPN_PROVIDER=SURFSHARK
             - OPENVPN_CONFIG=us-chi.prod.surfshark.com_udp
             - OPENVPN_USERNAME=CCAbbSjrdJLTMtytcHvhJdYT
-            - OPENVPN_PASSWORD=bmtGaUQd4bBAjRbajS9p4gqH
+            - OPENVPN_PASSWORD=vu5mGSGhL6KewSwW5T86WDD3
             - LOCAL_NETWORK=10.0.0.0/16
             - TRANSMISSION_WEB_UI=transmissionic
         logging:
