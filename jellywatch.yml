@@ -1,12 +1,13 @@
-version: '3.8'
+# Sync watched status between media servers locally
 
 services:
   jellyplex-watched:
     image: luigi311/jellyplex-watched:latest
     container_name: jellyplex-watched
+    restart: unless-stopped
     environment:
-      # Run interval - every 1 minute (60 seconds)
-      SLEEP_DURATION: "60"
+      - PUID=1000
+      - PGID=1000
       
       # Plex Configuration
       PLEX_BASEURL: "http://10.0.10.160:32400"
