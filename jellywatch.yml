@@ -27,15 +27,3 @@ services:
       # Sync Settings
       SYNC_FROM_PLEX_TO_JELLYFIN = "true"
       SYNC_FROM_JELLYFIN_TO_PLEX = "true"
-
-      
-    restart: unless-stopped
-    
-    # Optional: Network configuration
-    # networks:
-    #   - media-network
-
-# Optional: Define networks
-# networks:
-#   media-network:
-#     external: true
