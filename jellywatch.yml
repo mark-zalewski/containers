@@ -6,36 +6,28 @@ services:
     container_name: jellyplex-watched
     restart: unless-stopped
     environment:
-      - PUID=1000
-      - PGID=1000
       
       # Plex Configuration
-      PLEX_BASEURL: "http://10.0.10.160:32400"
-      PLEX_TOKEN: "VsB9HFvr2U-N-WRCdK1u"
-      PLEX_WATCHLIST_SYNC: "false"
+      PLEX_BASEURL = "http://10.0.10.160:32400"
+      PLEX_TOKEN = "VsB9HFvr2U-N-WRCdK1u"
+      PLEX_WATCHLIST_SYNC = "false"
       
       # Jellyfin Configuration
-      JELLYFIN_BASEURL: "http://10.0.10.103:8096"
-      JELLYFIN_TOKEN: "ce753d21fa24432dbd171e1a195a6770"
+      JELLYFIN_BASEURL = "http://10.0.10.103:8096"
+      JELLYFIN_TOKEN = "ce753d21fa24432dbd171e1a195a6770"
       
       # User Mapping: Plex username -> Jellyfin username
       # Format: plex_user1:jellyfin_user1,plex_user2:jellyfin_user2
-      USER_MAPPING: "mdzwolf:mark"
+      USER_MAPPING = "mdzwolf:mark"
       
       # Library Mapping: Plex library -> Jellyfin library
       # Format: plex_lib1:jellyfin_lib1,plex_lib2:jellyfin_lib2
-      LIBRARY_MAPPING: "Movies:Movies,TV Shows:Shows"
+      LIBRARY_MAPPING = "Movies:Movies,TV Shows:Shows"
       
       # Sync Settings
-      SYNC_FROM_PLEX_TO_JELLYFIN: "true"
-      SYNC_FROM_JELLYFIN_TO_PLEX: "true"
-      
-      # Logging
-      LOG_LEVEL: "info"
-      
-    volumes:
-      # Optional: Persist logs
-      - ./jellyplex-watched/logs:/app/logs
+      SYNC_FROM_PLEX_TO_JELLYFIN = "true"
+      SYNC_FROM_JELLYFIN_TO_PLEX = "true"
+
       
     restart: unless-stopped
     
