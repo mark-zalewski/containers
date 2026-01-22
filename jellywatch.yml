@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  jellyplex-watched:
+    image: luigi311/jellyplex-watched:latest
+    container_name: jellyplex-watched
+    restart: unless-stopped
+    environment:
+      # --- Plex ---
+      PLEX_BASE_URL = "http://10.0.10.160:32400"
+      PLEX_TOKEN = "VsB9HFvr2U-N-WRCdK1u"
+
+      # --- Jellyfin ---
+      JELLYFIN_BASE_URL = "http://10.0.10.103:8096"
+      JELLYFIN_API_KEY = "ce753d21fa24432dbd171e1a195a6770"
+
+      # --- Sync behavior ---
+      SYNC_FROM_PLEX = "true"
+      SYNC_FROM_JELLYFIN = "true"
+      SYNC_INTERVAL = "60"
+
+      # --- User mappings ---
+      # Format: plexUser:jellyfinUser
+      USER_MAPPING = { "mdzwolf" : "mark" }
+
+      # --- Library mappings ---
+      # Format: plexLibrary:jellyfinLibrary
+      LIBRARY_MAPPINGS = { "Movies" : "Movies", "TV Shows" : "Shows" }
